@@ -33,7 +33,6 @@ directory and drop them into `ephe/`. Chiron requires the `seas` file and is
 skipped gracefully without it.
 
 License note: pyswisseph / Swiss Ephemeris are AGPL for non-commercial use.
-Fine for self-hosting; keep it open if you ever publish it.
 
 ## Deploy on TrueNAS (Docker Compose)
 
@@ -67,18 +66,18 @@ Fine for self-hosting; keep it open if you ever publish it.
    ✓ Checkpoint: `cat data/charts.json` shows your saved chart. This file is
    the only state — include it in your backup job.
 
-## Caddy
+## Reverse proxy (Caddy)
 
 Add to your Caddyfile alongside your other services:
 
-```
-astro.home.pikelabs.net {
+​```
+astro.example.com {
     reverse_proxy 10.10.10.x:5010
 }
-```
+​```
 
-Reload Caddy, then browse `https://astro.home.pikelabs.net` — the wildcard
-cert covers it, and Tailscale split DNS gives you the same URL remotely.
+With a wildcard certificate and split DNS (e.g. Tailscale), the same
+hostname works on your LAN and remotely.
 
 ## Home Assistant
 
@@ -111,4 +110,13 @@ cd backend
 python3 -m venv venv && . venv/bin/activate
 pip install -r requirements.txt
 python3 app.py        # http://localhost:5000
+
 ```
+## License
+
+Copyright © 2026 Gabby Pike
+
+This project is licensed under the AGPL-3.0 — see [LICENSE](LICENSE).
+Astronomical calculations powered by the
+[Swiss Ephemeris](https://www.astro.com/swisseph/) via
+[pyswisseph](https://github.com/astrorigin/pyswisseph), used under the AGPL.
