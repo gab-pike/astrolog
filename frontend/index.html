@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>astrolog · current sky</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>☽</text></svg>">
+</head>
+<body>
+  <header>
+    <h1>ASTROLOG <span class="dim">· pikelabs ephemeris</span></h1>
+    <span id="moon-pill">☽ …</span>
+    <span id="clock">loading…</span>
+  </header>
+
+  <main>
+    <section class="card" id="wheel-card">
+      <h2>The sky right now</h2>
+      <svg id="wheel" viewBox="0 0 640 640" role="img" aria-label="Live zodiac wheel"></svg>
+      <p class="mono" id="angles" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--subtext); text-align: center;"></p>
+    </section>
+
+    <section class="card">
+      <h2>Planets</h2>
+      <table id="planet-table">
+        <thead><tr><th></th><th>Body</th><th>Sign</th><th>Position</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Aspects in the sky</h2>
+      <table id="aspect-table">
+        <thead><tr><th>Body</th><th>Aspect</th><th>Body</th><th>Orb</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Natal charts</h2>
+      <div id="chart-controls">
+        <select id="chart-select" aria-label="Select natal chart">
+          <option value="">— current sky only —</option>
+        </select>
+        <button id="delete-chart" class="danger" disabled>Delete</button>
+      </div>
+      <div id="natal-form">
+        <label>Name <input id="f-name" placeholder="Gabby"></label>
+        <label>Birth date <input id="f-date" type="date"></label>
+        <label>Birth time <input id="f-time" type="time" step="60"></label>
+        <label>Timezone <input id="f-tz" placeholder="America/Chicago"></label>
+        <label>Latitude <input id="f-lat" type="number" step="0.0001" placeholder="43.5500"></label>
+        <label>Longitude <input id="f-lon" type="number" step="0.0001" placeholder="-96.7300"></label>
+      </div>
+      <button id="save-chart" style="margin-top: 0.7rem;">Save chart</button>
+      <p id="form-msg"></p>
+    </section>
+
+    <section class="card">
+      <h2>Transits to natal</h2>
+      <table id="transit-table">
+        <thead><tr><th>Transiting</th><th>Aspect</th><th>Natal</th><th>Orb</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

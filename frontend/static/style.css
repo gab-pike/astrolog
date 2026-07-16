@@ -1,0 +1,178 @@
+/* astrolog — Catppuccin Mocha */
+:root {
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --overlay0: #6c7086;
+  --text: #cdd6f4;
+  --subtext: #a6adc8;
+  --lavender: #b4befe;
+  --mauve: #cba6f7;
+  --blue: #89b4fa;
+  --teal: #94e2d5;
+  --green: #a6e3a1;
+  --yellow: #f9e2af;
+  --peach: #fab387;
+  --red: #f38ba8;
+
+  --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  --font-mono: ui-monospace, 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--crust);
+  background-image: radial-gradient(ellipse at 50% -20%, #24243a 0%, var(--crust) 60%);
+  color: var(--text);
+  font-family: var(--font-display);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1.4rem 2rem 1rem;
+  border-bottom: 1px solid var(--surface0);
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  margin: 0;
+  color: var(--lavender);
+}
+h1 .dim { color: var(--overlay0); }
+
+#clock {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--subtext);
+}
+
+#moon-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--yellow);
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(340px, 1.2fr) minmax(300px, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem 2rem 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+@media (max-width: 860px) {
+  main { grid-template-columns: 1fr; padding: 1rem; }
+}
+
+.card {
+  background: var(--base);
+  border: 1px solid var(--surface0);
+  border-radius: 14px;
+  padding: 1.1rem 1.3rem;
+}
+
+.card h2 {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mauve);
+  margin: 0 0 0.9rem;
+}
+
+#wheel-card { grid-row: span 2; display: flex; flex-direction: column; }
+#wheel { width: 100%; height: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+td, th { padding: 0.32rem 0.4rem; text-align: left; }
+th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--overlay0);
+  border-bottom: 1px solid var(--surface0);
+}
+tbody tr:nth-child(even) { background: rgba(49, 50, 68, 0.35); }
+td.mono { font-family: var(--font-mono); font-size: 0.84rem; color: var(--subtext); }
+td.glyph { font-size: 1.05rem; width: 1.6rem; }
+
+.rx {
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border: 1px solid var(--red);
+  border-radius: 5px;
+  padding: 0 0.3rem;
+  margin-left: 0.4rem;
+}
+
+.aspect-Conjunction { color: var(--lavender); }
+.aspect-Sextile     { color: var(--teal); }
+.aspect-Square      { color: var(--red); }
+.aspect-Trine       { color: var(--green); }
+.aspect-Opposition  { color: var(--peach); }
+
+/* natal chart manager */
+#chart-controls { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+select, input, button {
+  background: var(--mantle);
+  color: var(--text);
+  border: 1px solid var(--surface1);
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+input:focus, select:focus, button:focus-visible {
+  outline: 2px solid var(--mauve);
+  outline-offset: 1px;
+}
+button { cursor: pointer; color: var(--mauve); }
+button:hover { background: var(--surface0); }
+button.danger { color: var(--red); }
+
+#natal-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+#natal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--overlay0);
+}
+#form-msg { font-family: var(--font-mono); font-size: 0.8rem; margin-top: 0.5rem; }
+#form-msg.ok { color: var(--green); }
+#form-msg.err { color: var(--red); }
+
+.empty { color: var(--overlay0); font-style: italic; font-size: 0.9rem; }
+
+@media (prefers-reduced-motion: no-preference) {
+  #wheel .planet { transition: transform 1.2s ease; }
+}

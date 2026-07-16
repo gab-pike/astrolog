@@ -1,0 +1,53 @@
+# astrolog — Home Assistant package
+# Drop this file into config/packages/ (with `packages: !include_dir_named packages`
+# under `homeassistant:` in configuration.yaml), then restart HA.
+# Replace the resource IP with your TrueNAS host or use the Caddy hostname.
+
+rest:
+  - resource: "http://10.10.10.x:5010/api/ha"
+    scan_interval: 300
+    sensor:
+      - name: "Sun Sign"
+        unique_id: astrolog_sun_sign
+        value_template: "{{ value_json.sun_sign }}"
+        icon: mdi:white-balance-sunny
+      - name: "Moon Sign"
+        unique_id: astrolog_moon_sign
+        value_template: "{{ value_json.moon_sign }}"
+        icon: mdi:moon-waning-crescent
+      - name: "Moon Phase (Astrolog)"
+        unique_id: astrolog_moon_phase
+        value_template: "{{ value_json.moon_phase }}"
+        icon: mdi:moon-full
+      - name: "Moon Illumination"
+        unique_id: astrolog_moon_illumination
+        value_template: "{{ value_json.moon_illumination }}"
+        unit_of_measurement: "%"
+        icon: mdi:brightness-percent
+      - name: "Current Ascendant"
+        unique_id: astrolog_ascendant
+        value_template: "{{ value_json.ascendant }}"
+        icon: mdi:compass-rose
+      - name: "Planets Retrograde"
+        unique_id: astrolog_retrogrades
+        value_template: "{{ value_json.retrogrades | join(', ') if value_json.retrogrades else 'None' }}"
+        icon: mdi:orbit
+    binary_sensor:
+      - name: "Mercury Retrograde"
+        unique_id: astrolog_mercury_rx
+        value_template: "{{ value_json.mercury_retrograde }}"
+        icon: mdi:alert-decagram
+
+# Example automation: gentle nudge when Mercury stations retrograde
+automation:
+  - alias: "Mercury retrograde began"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.mercury_retrograde
+        from: "off"
+        to: "on"
+    action:
+      - service: notify.notify
+        data:
+          title: "☿ Mercury is retrograde"
+          message: "Back up the homelab and re-read your emails before sending."

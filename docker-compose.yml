@@ -1,0 +1,14 @@
+services:
+  astrolog:
+    build: .
+    container_name: astrolog
+    restart: unless-stopped
+    ports:
+      - "5010:5000"
+    environment:
+      # Your home coordinates — used for house cusps / Ascendant
+      DEFAULT_LAT: "43.48"
+      DEFAULT_LON: "-96.70"
+    volumes:
+      - ./data:/data          # saved natal charts (back this up)
+      - ./ephe:/ephe:ro       # optional Swiss Ephemeris .se1 files
