@@ -3,7 +3,7 @@
 const GLYPHS = {
   Sun: "☉", Moon: "☽", Mercury: "☿", Venus: "♀", Mars: "♂",
   Jupiter: "♃", Saturn: "♄", Uranus: "♅", Neptune: "♆", Pluto: "♇",
-  "North Node": "☊", Chiron: "⚷",
+  "North Node": "☊", Lilith: "⚸", Chiron: "⚷",
 };
 const SIGN_GLYPHS = ["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"];
 const ELEMENT_COLOR = [
