@@ -1,0 +1,7 @@
+# Saved natal charts — birth dates/times/places are personal data.
+# This keeps charts.json from ever landing in the public repo.
+data/
+
+# Swiss Ephemeris data files — large binaries, downloaded separately
+# from Astrodienst (see README), not ours to redistribute.
+ephe/

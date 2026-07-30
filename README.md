@@ -61,7 +61,10 @@ License note: pyswisseph / Swiss Ephemeris are AGPL for non-commercial use.
 5. Add a natal chart in the "Natal charts" card (name, birth date/time, IANA
    timezone like `America/Chicago`, birth coordinates). Saving selects it,
    draws the natal ring inside the wheel (blue glyphs), and fills the
-   "Transits to natal" table.
+   "Transits to natal" table. A "Live sky / Natal" toggle appears on the
+   wheel card — Natal view shows the birth chart on its own: the wheel
+   framed by the natal Ascendant and houses, the written placements list
+   (sign, position, house), and the full natal aspects list.
 
    ✓ Checkpoint: `cat data/charts.json` shows your saved chart. This file is
    the only state — include it in your backup job.

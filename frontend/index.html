@@ -16,21 +16,27 @@
 
   <main>
     <section class="card" id="wheel-card">
-      <h2>The sky right now</h2>
-      <svg id="wheel" viewBox="0 0 640 640" role="img" aria-label="Live zodiac wheel"></svg>
+      <div class="card-head">
+        <h2 id="wheel-title">The sky right now</h2>
+        <div id="view-toggle" role="tablist" aria-label="Wheel view" hidden>
+          <button id="mode-live" class="mode active" role="tab" aria-selected="true">Live sky</button>
+          <button id="mode-natal" class="mode" role="tab" aria-selected="false">Natal</button>
+        </div>
+      </div>
+      <svg id="wheel" viewBox="0 0 640 640" role="img" aria-label="Zodiac wheel"></svg>
       <p class="mono" id="angles" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--subtext); text-align: center;"></p>
     </section>
 
     <section class="card">
-      <h2>Planets</h2>
+      <h2 id="planet-title">Planets</h2>
       <table id="planet-table">
-        <thead><tr><th></th><th>Body</th><th>Sign</th><th>Position</th></tr></thead>
+        <thead><tr><th></th><th>Body</th><th>Sign</th><th>Position</th><th>House</th></tr></thead>
         <tbody></tbody>
       </table>
     </section>
 
     <section class="card">
-      <h2>Aspects in the sky</h2>
+      <h2 id="aspect-title">Aspects in the sky</h2>
       <table id="aspect-table">
         <thead><tr><th>Body</th><th>Aspect</th><th>Body</th><th>Orb</th></tr></thead>
         <tbody></tbody>
