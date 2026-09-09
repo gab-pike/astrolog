@@ -153,5 +153,10 @@ def static_files(filename):
     return send_from_directory(os.path.join(FRONTEND_DIR, "static"), filename)
 
 
+@app.get("/favicon.ico")
+def favicon():
+    return send_from_directory(os.path.join(FRONTEND_DIR, "static", "icons"), "favicon.ico")
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
